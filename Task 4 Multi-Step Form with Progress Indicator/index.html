@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FormFlow — Smart Multi-Step Application Platform</title>
+    <meta
+      name="description"
+      content="FormFlow is a smart multi-step application platform with autosave, draft recovery, validation and a full review step."
+    />
+    <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to form content</a>
+
+    <div class="app-shell">
+      <!-- ================= Sidebar ================= -->
+      <aside class="sidebar" aria-label="Application progress">
+        <div class="brand">
+          <span class="brand-mark" aria-hidden="true">FF</span>
+          <span class="brand-text">
+            <strong>FormFlow</strong>
+            <small>Smart Multi-Step Application Platform</small>
+          </span>
+        </div>
+
+        <div class="sidebar-progress">
+          <div class="sidebar-progress-head">
+            <span id="sidebar-step-label">Step 1 of 5</span>
+            <span id="sidebar-percent">20% Complete</span>
+          </div>
+          <div
+            class="progress-track"
+            role="progressbar"
+            aria-label="Form completion"
+            aria-valuemin="0"
+            aria-valuemax="100"
+            aria-valuenow="20"
+            id="progress-bar"
+          >
+            <div class="progress-fill" id="progress-fill" style="width: 20%"></div>
+          </div>
+        </div>
+
+        <nav class="steps-nav" aria-label="Form steps">
+          <ol id="step-list" class="step-list"></ol>
+        </nav>
+
+        <div class="sidebar-help">
+          <h2>Need a hand?</h2>
+          <p>
+            Your answers save automatically to this browser. You can leave at any time and continue
+            later from the same device.
+          </p>
+        </div>
+
+        <div class="sidebar-foot">
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-history">
+            Submission history
+          </button>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-clear-draft">
+            Clear draft
+          </button>
+        </div>
+      </aside>
+
+      <!-- ================= Main ================= -->
+      <div class="main-col">
+        <header class="topbar">
+          <div class="topbar-brand">
+            <span class="brand-mark" aria-hidden="true">FF</span>
+            <span class="topbar-title">FormFlow</span>
+          </div>
+          <div class="topbar-actions">
+            <span class="autosave" id="autosave-status" role="status" aria-live="polite">
+              <span class="autosave-dot" aria-hidden="true"></span>
+              <span id="autosave-text">Not saved yet</span>
+            </span>
+            <button
+              type="button"
+              class="icon-btn"
+              id="btn-theme"
+              aria-label="Switch to dark theme"
+              title="Toggle theme"
+            >
+              <span id="theme-icon" aria-hidden="true">☾</span>
+            </button>
+            <button
+              type="button"
+              class="icon-btn mobile-only"
+              id="btn-steps"
+              aria-label="Show steps and progress"
+              aria-expanded="false"
+              aria-controls="mobile-steps"
+            >
+              <span aria-hidden="true">☰</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="mobile-progress">
+          <div class="mobile-progress-head">
+            <span id="mobile-step-label">Step 1 of 5 · Personal Information</span>
+            <span id="mobile-percent">20%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="mobile-progress-fill" style="width: 20%"></div>
+          </div>
+          <div class="mobile-steps" id="mobile-steps" hidden>
+            <ol class="step-list step-list--compact" id="mobile-step-list"></ol>
+            <div class="drawer-actions">
+              <button type="button" class="btn btn-ghost btn-sm" id="btn-save-exit-m">Save &amp; Exit</button>
+              <button type="button" class="btn btn-ghost btn-sm" id="btn-history-m">Submission history</button>
+              <button type="button" class="btn btn-quiet btn-sm" id="btn-clear-draft-m">Clear draft</button>
+            </div>
+          </div>
+        </div>
+
+        <main class="main-content" id="main-content" tabindex="-1">
+          <div class="panel" id="panel">
+            <div id="step-region" aria-live="polite">
+              <!-- steps rendered here -->
+            </div>
+          </div>
+        </main>
+
+        <footer class="formbar" id="formbar">
+          <button type="button" class="btn btn-quiet" id="btn-back">Back</button>
+          <div class="formbar-right">
+            <button type="button" class="btn btn-ghost" id="btn-save-exit">Save &amp; Exit</button>
+            <button type="button" class="btn btn-primary" id="btn-next">Continue</button>
+            <button type="button" class="btn btn-primary" id="btn-submit" hidden>
+              Submit application
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- ================= Dialogs ================= -->
+    <div class="overlay" id="overlay" hidden></div>
+
+    <div
+      class="dialog"
+      id="confirm-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-title"
+      aria-describedby="confirm-body"
+      hidden
+    >
+      <h2 id="confirm-title">Are you sure?</h2>
+      <p id="confirm-body">This action cannot be undone.</p>
+      <div class="dialog-actions">
+        <button type="button" class="btn btn-quiet" id="confirm-cancel">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirm-ok">Confirm</button>
+      </div>
+    </div>
+
+    <div
+      class="dialog dialog--wide"
+      id="history-dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="history-title"
+      hidden
+    >
+      <div class="dialog-head">
+        <h2 id="history-title">Submission history</h2>
+        <button type="button" class="icon-btn" id="history-close" aria-label="Close history">
+          <span aria-hidden="true">✕</span>
+        </button>
+      </div>
+      <div id="history-body" class="dialog-body"></div>
+    </div>
+
+    <div class="toast-stack" id="toast-stack" aria-live="polite" aria-atomic="false"></div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/validation.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
