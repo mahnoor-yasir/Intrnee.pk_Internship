@@ -1,0 +1,249 @@
+/* ============================================================
+   FormFlow — responsive.css
+   Breakpoints tuned for 1920 → 360px. No horizontal scrolling.
+   ============================================================ */
+
+@media (max-width: 1440px) {
+  :root {
+    --sidebar-w: 300px;
+  }
+}
+
+@media (max-width: 1180px) {
+  :root {
+    --sidebar-w: 268px;
+  }
+
+  .main-content {
+    padding: 26px 20px 34px;
+  }
+
+  .panel {
+    padding: 26px;
+  }
+}
+
+/* --------------------------- Tablet & below --------------------------- */
+@media (max-width: 1023px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .sidebar {
+    display: none;
+  }
+
+  .topbar-brand {
+    display: flex;
+  }
+
+  .mobile-progress {
+    display: block;
+  }
+
+  .mobile-only {
+    display: grid;
+  }
+
+  .autosave {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .main-content {
+    padding: 20px 18px 30px;
+  }
+
+  .panel {
+    padding: 22px;
+    border-radius: var(--radius-lg);
+  }
+
+  .step-title {
+    font-size: 24px;
+  }
+
+  .success-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 860px) {
+  .choice-grid {
+    grid-template-columns: repeat(min(var(--cols, 2), 2), minmax(0, 1fr));
+  }
+}
+
+/* ------------------------------- Mobile ------------------------------- */
+@media (max-width: 720px) {
+  body {
+    font-size: 15px;
+  }
+
+  .topbar {
+    padding: 10px 14px;
+  }
+
+  .topbar-actions {
+    gap: 8px;
+  }
+
+  .autosave {
+    max-width: 132px;
+  }
+
+  .mobile-progress {
+    top: 58px;
+    padding: 10px 14px 12px;
+  }
+
+  .main-content {
+    padding: 16px 12px 28px;
+  }
+
+  .panel {
+    padding: 18px 16px;
+    border-radius: var(--radius-lg);
+  }
+
+  .step-title {
+    font-size: 21px;
+  }
+
+  .step-desc {
+    font-size: 14px;
+  }
+
+  .field-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .field,
+  .field--half {
+    grid-column: span 1;
+  }
+
+  .choice-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .review-head {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .success-meta {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .success-title {
+    font-size: 21px;
+  }
+
+  .history-item {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .history-actions {
+    justify-content: flex-start;
+  }
+
+  .formbar {
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    gap: 8px;
+  }
+
+  .formbar .btn {
+    flex: 1 1 auto;
+    padding: 11px 12px;
+  }
+
+  .formbar-right {
+    flex: 2 1 auto;
+    flex-wrap: nowrap;
+  }
+
+  .btn {
+    min-height: 46px;
+  }
+
+  .dialog {
+    padding: 20px 18px;
+    border-radius: var(--radius-lg);
+  }
+
+  .toast-stack {
+    left: 12px;
+    right: 12px;
+    bottom: 82px;
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .topbar-title {
+    font-size: 15px;
+  }
+
+  .autosave {
+    max-width: 108px;
+  }
+
+  .brand-mark {
+    width: 36px;
+    height: 36px;
+    font-size: 13px;
+  }
+
+  .formbar-right .btn-ghost {
+    display: none; /* Save & Exit stays available in the drawer/desktop */
+  }
+
+  .optional-tag {
+    display: none;
+  }
+}
+
+/* Extra small phones (360px) — keep every control usable */
+@media (max-width: 380px) {
+  .panel {
+    padding: 16px 13px;
+  }
+
+  .btn {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+
+  .dropzone {
+    padding: 20px 12px;
+  }
+}
+
+/* Short viewports: don't let sticky bars eat the screen */
+@media (max-height: 620px) {
+  .formbar,
+  .mobile-progress,
+  .topbar {
+    position: static;
+  }
+}
+
+@media print {
+  .sidebar,
+  .topbar,
+  .formbar,
+  .mobile-progress,
+  .toast-stack {
+    display: none !important;
+  }
+
+  .panel {
+    box-shadow: none;
+    border: 0;
+  }
+}
