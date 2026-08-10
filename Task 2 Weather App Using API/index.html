@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <!-- Background Animation -->
+    <div class="weather-bg" id="weatherBg">
+        <div class="particles" id="particles"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-inner">
+            <div class="logo">
+                <span class="logo-icon">🌤️</span>
+                <span class="logo-text">Weather<span>Dashboard</span></span>
+            </div>
+            
+            <nav class="nav">
+                <a href="#current" class="active">Current</a>
+                <a href="#hourly">Hourly</a>
+                <a href="#daily">Forecast</a>
+                <a href="#saved">Saved</a>
+            </nav>
+
+            <div class="header-controls">
+                <div class="unit-toggle">
+                    <button class="unit-btn active" data-unit="metric" aria-pressed="true">°C</button>
+                    <button class="unit-btn" data-unit="imperial" aria-pressed="false">°F</button>
+                </div>
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                    <span class="sun">☀️</span>
+                    <span class="moon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Search Section -->
+            <section class="search-section">
+                <form id="searchForm" class="search-form">
+                    <div class="search-input-wrap">
+                        <span class="search-icon">🔍</span>
+                        <input 
+                            type="text" 
+                            id="cityInput" 
+                            placeholder="Search city... e.g. Lahore, Tokyo, London"
+                            autocomplete="off"
+                        />
+                        <button type="button" class="clear-btn" id="clearBtn" hidden>✕</button>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="searchBtn">
+                        <span class="btn-text">Search</span>
+                        <span class="btn-spinner"></span>
+                    </button>
+                    <button type="button" class="btn btn-secondary" id="geoBtn">
+                        📍 My Location
+                    </button>
+                </form>
+                <p class="search-hint">Press Enter to search • Theme, unit & history saved automatically</p>
+            </section>
+
+            <!-- Error Alert -->
+            <div id="errorBox" class="alert" hidden>
+                <span class="alert-icon">⚠️</span>
+                <div>
+                    <strong id="errorTitle">Error</strong>
+                    <span id="errorText"></span>
+                </div>
+                <button class="alert-close" id="errorClose">✕</button>
+            </div>
+
+            <!-- Empty State -->
+            <section id="emptyState" class="empty-state">
+                <div class="empty-content">
+                    <div class="empty-icon">🌦️</div>
+                    <h1>Discover the Weather</h1>
+                    <p>Search for any city or use your location to see live weather conditions, hourly forecast, and 5-day outlook.</p>
+                    <div class="empty-actions">
+                        <button class="btn btn-primary" id="emptyGeoBtn">📍 Use My Location</button>
+                        <button class="btn btn-secondary" id="emptyFocusBtn">🔍 Search City</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skeleton Loading -->
+            <div id="skeleton" class="skeleton-grid" hidden>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card"></div>
+                <div class="skeleton-card wide"></div>
+            </div>
+
+            <!-- Results -->
+            <div id="results" hidden>
+                <!-- Current Weather -->
+                <section id="current" class="current-weather">
+                    <div class="current-main">
+                        <div class="current-info">
+                            <div class="city-header">
+                                <h1 id="cityName">—</h1>
+                                <button class="fav-btn" id="favBtn">
+                                    <span class="heart">♡</span>
+                                    <span class="fav-label">Favorite</span>
+                                </button>
+                            </div>
+                            <p class="datetime" id="datetime">—</p>
+                            <div class="weather-main">
+                                <div class="weather-icon" id="weatherIcon">☀️</div>
+                                <div class="temp-display">
+                                    <span class="temp" id="temperature">—</span>
+                                    <span class="temp-unit" id="tempUnit">°C</span>
+                                </div>
+                                <div>
+                                    <p class="condition" id="condition">—</p>
+                                    <p class="description" id="description">—</p>
+                                    <p class="feels-like">Feels like <strong id="feelsLike">—</strong></p>
+                                </div>
+                            </div>
+                            <p class="weather-summary" id="summary"></p>
+                            <ul class="advisories" id="advisories"></ul>
+                        </div>
+
+                        <div class="current-details" id="details">
+                            <!-- Dynamic details injected -->
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Hourly Forecast -->
+                <section id="hourly" class="forecast-section">
+                    <div class="section-header">
+                        <h2>Next 24 Hours</h2>
+                        <span class="section-note">Scroll →</span>
+                    </div>
+                    <div class="hourly-scroll" id="hourlyList">
+                        <!-- Injected by JS -->
+                    </div>
+                </section>
+
+                <!-- Daily Forecast -->
+                <section id="daily" class="forecast-section">
+                    <div class="section-header">
+                        <h2>5-Day Forecast</h2>
+                    </div>
+                    <div class="daily-grid" id="dailyList">
+                        <!-- Injected by JS -->
+                    </div>
+                </section>
+            </div>
+
+            <!-- Saved Section -->
+            <section id="saved" class="saved-section">
+                <div class="saved-grid">
+                    <div class="saved-card">
+                        <div class="saved-header">
+                            <h3>⭐ Favorites</h3>
+                            <button class="clear-btn-small" id="clearFavs" hidden>Clear All</button>
+                        </div>
+                        <ul class="chip-list" id="favList"></ul>
+                        <p class="empty-msg" id="favEmpty">No favorites yet — tap the heart on any city.</p>
+                    </div>
+                    <div class="saved-card">
+                        <div class="saved-header">
+                            <h3>🕐 Recent Searches</h3>
+                            <button class="clear-btn-small" id="clearRecents" hidden>Clear All</button>
+                        </div>
+                        <ul class="chip-list" id="recentList"></ul>
+                        <p class="empty-msg" id="recentEmpty">Your recent searches will appear here.</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>Weather Dashboard · Data by OpenWeatherMap · Built with ❤️</p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
