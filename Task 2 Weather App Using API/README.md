@@ -469,58 +469,6 @@ The project also uses:
 
 ---
 
-## 📁 Project Structure
-
-```text
-weather-dashboard/
-│
-├── index.html
-├── style.css
-├── script.js
-├── config.js
-│
-├── screenshots/
-│   ├── desktop.png
-│   ├── mobile.png
-│   ├── dark-mode.png
-│   ├── forecast.png
-│   ├── search.png
-│   └── favorites.png
-│
-├── assets/
-│   └── icons/
-│
-├── README.md
-├── LICENSE
-└── .gitignore
-```
-
----
-
-## 📦 Installation
-
-### Prerequisites
-
-You need:
-
-- A modern web browser
-- Internet connection
-- OpenWeatherMap API key
-- Optional: VS Code with Live Server
-
-### Clone Repository
-
-```bash
-git clone https://github.com/your-username/weather-dashboard.git
-```
-
-Navigate to the project:
-
-```bash
-cd weather-dashboard
-```
-
----
 
 ## 🔑 API Key Setup
 
