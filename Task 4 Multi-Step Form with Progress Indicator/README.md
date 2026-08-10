@@ -103,10 +103,6 @@ FormFlow/
 │   ├── ui.js               Toasts, accessible dialogs, theme, focus helpers
 │   ├── form.js             Schema, state, rendering, navigation, submission
 │   └── app.js              Event wiring, draft recovery, history management
-├── assets/
-│   ├── icons/favicon.svg   Brand mark / favicon
-│   ├── images/             (reserved for additional imagery)
-│   └── illustrations/      (reserved for additional illustrations)
 └── README.md
 ```
 
