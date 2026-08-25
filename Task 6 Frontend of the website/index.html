@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEXORA — Digital experiences, engineered for what's next</title>
+<meta name="description" content="NEXORA is a digital technology studio building high-performance frontend engineering, UI/UX design, AI-powered experiences and scalable web products.">
+<meta name="theme-color" content="#05070c">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NEXORA — Digital experiences, engineered for what's next">
+<meta property="og:description" content="Frontend engineering, UI/UX design and AI-powered digital products built for performance and accessibility.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/animations.css">
+<link rel="stylesheet" href="css/responsive.css">
+<link rel="stylesheet" href="css/app.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"NEXORA","slogan":"Digital experiences, engineered for what's next.","description":"Fictional digital technology studio built as a frontend engineering demonstration.","email":"hello@nexora.studio"}
+</script>
+</head>
+<body>
+
+<!-- Branded loading experience -->
+<div class="preloader" id="preloader" role="status" aria-live="polite">
+  <div class="preloader__inner">
+    <span class="preloader__word">NEXORA</span>
+    <span class="preloader__bar"><i></i></span>
+    <span class="preloader__hint">Preparing experience</span>
+  </div>
+</div>
+
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<a class="skip-link" href="#main">Skip to main content</a>
+
+<div class="ambience" aria-hidden="true">
+  <div class="ambience__grid"></div>
+  <div class="ambience__orb ambience__orb--a"></div>
+  <div class="ambience__orb ambience__orb--b"></div>
+</div>
+
+<!-- ============================ HEADER ============================ -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="brand" href="#hero" aria-label="NEXORA home">
+      <svg class="brand__mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        <defs><linearGradient id="bm" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#3ddad0"/><stop offset="1" stop-color="#5b9dff"/></linearGradient></defs>
+        <rect x="1.5" y="1.5" width="29" height="29" rx="9" stroke="url(#bm)" stroke-width="1.6"/>
+        <path d="M10 22V10l12 12V10" stroke="url(#bm)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand__text">NEXORA</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul class="nav__list">
+        <li><a class="nav__link" href="#hero" data-nav-link="hero">Home</a></li>
+        <li><a class="nav__link" href="#solutions" data-nav-link="solutions">Solutions</a></li>
+        <li><a class="nav__link" href="#services" data-nav-link="services">Services</a></li>
+        <li><a class="nav__link" href="#work" data-nav-link="work">Work</a></li>
+        <li><a class="nav__link" href="#process" data-nav-link="process">Process</a></li>
+        <li><a class="nav__link" href="#insights" data-nav-link="insights">Insights</a></li>
+        <li><a class="nav__link" href="#contact" data-nav-link="contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <button class="search-trigger" type="button" data-search-open aria-label="Open search (Control or Command plus K)">
+        <span aria-hidden="true" style="display:flex"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg></span>
+        <span>Search…</span>
+        <kbd>Ctrl K</kbd>
+      </button>
+      <button class="icon-btn tt" type="button" data-theme-toggle data-tooltip="Toggle theme" aria-pressed="false"></button>
+      <button class="icon-btn tt" type="button" data-open-dashboard-global data-tooltip="Dashboard" aria-label="Open dashboard"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="3" width="7" height="8" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="11" width="7" height="10" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg></button>
+      <button class="btn btn--primary btn--sm" type="button" data-inquiry-open>Start a Project</button>
+      <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="drawer" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<div class="drawer" id="drawer" aria-hidden="true">
+  <div class="drawer__scrim" data-drawer-close></div>
+  <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div class="drawer__head">
+      <span class="brand"><span class="brand__text">NEXORA</span></span>
+      <button class="icon-btn" type="button" data-drawer-close aria-label="Close navigation menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <nav aria-label="Mobile">
+      <ul class="drawer__list">
+        <li><a href="#hero" data-nav-link="hero">Home</a></li>
+        <li><a href="#solutions" data-nav-link="solutions">Solutions</a></li>
+        <li><a href="#services" data-nav-link="services">Services</a></li>
+        <li><a href="#work" data-nav-link="work">Work</a></li>
+        <li><a href="#process" data-nav-link="process">Process</a></li>
+        <li><a href="#pricing" data-nav-link="pricing">Pricing</a></li>
+        <li><a href="#insights" data-nav-link="insights">Insights</a></li>
+        <li><a href="#faq" data-nav-link="faq">FAQ</a></li>
+        <li><a href="#contact" data-nav-link="contact">Contact</a></li>
+        <li><a href="#/dashboard">Dashboard</a></li>
+        <li><a href="#/saved">Saved articles</a></li>
+        <li><a href="#/preferences">Preferences</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn--primary btn--block" href="#contact">Start a Project</a>
+    <div class="drawer__foot">
+      <button class="btn btn--ghost btn--sm" type="button" data-search-open>Search the site</button>
+      <span>hello@nexora.studio</span>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============================ HERO ============================ -->
+<section class="hero" id="hero" aria-labelledby="heroTitle">
+  <div class="container hero__inner">
+    <div>
+      <span class="status-badge load-in"><span class="status-dot" aria-hidden="true"></span> Available for new projects</span>
+      <h1 id="heroTitle" class="load-in" data-delay="1">Digital experiences, <span class="text-grad">engineered for what's next.</span></h1>
+      <p class="hero__lead load-in" data-delay="2">NEXORA builds high-performance digital experiences and modern web products — frontend engineering, interface design and AI-powered workflows delivered as one considered system.</p>
+      <div class="hero__cta load-in" data-delay="3">
+        <a class="btn btn--primary" href="#contact">Start a Project</a>
+        <a class="btn btn--ghost" href="#work">Explore Our Work</a>
+        <a class="link-arrow" href="#process">See how we work <span aria-hidden="true">→</span></a>
+      </div>
+      <div class="hero__meta load-in" data-delay="4">
+        <div><strong><span data-count="48" data-suffix="+">0</span></strong><span>Projects delivered</span></div>
+        <div><strong><span data-count="97" data-suffix="%">0</span></strong><span>Client satisfaction</span></div>
+        <div><strong><span data-count="12" data-suffix="+">0</span></strong><span>Digital products</span></div>
+      </div>
+    </div>
+
+    <div class="hero__visual load-in" data-delay="2">
+      <div class="hero-stage" id="heroStage">
+        <div class="hero-stage__grid"></div>
+        <div class="hero-stage__ring"></div>
+        <div class="hero-stage__ring hero-stage__ring--2"></div>
+        <div class="hero-stage__core"></div>
+      </div>
+      <div class="float-card float-card--a"><small>Lighthouse</small><strong>98 / 100</strong><span class="bar" data-bar="98"><i></i></span></div>
+      <div class="float-card float-card--b"><small>LCP</small><strong>1.2s</strong><span class="bar" data-bar="86"><i></i></span></div>
+      <div class="float-card float-card--c"><small>Accessibility</small><strong>WCAG 2.2 AA</strong><span class="bar" data-bar="100"><i></i></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TRUST ============================ -->
+<section class="section section--tight trust" id="trust" aria-labelledby="trustTitle">
+  <div class="container">
+    <h2 class="trust__label" id="trustTitle">Demonstration partners &amp; capability focus</h2>
+    <div class="trust__logos" data-reveal>
+      <span class="trust__logo">◆ NOVA</span>
+      <span class="trust__logo">▲ Vertex</span>
+      <span class="trust__logo">◉ Orbit</span>
+      <span class="trust__logo">✦ Lumina</span>
+      <span class="trust__logo">⬢ Axiom</span>
+    </div>
+    <div class="marquee" tabindex="0" aria-label="Technology focus areas, scrolling. Hover or focus to pause.">
+      <div class="marquee__track">
+        <span class="pill">HTML5</span><span class="pill">CSS3</span><span class="pill">JavaScript</span><span class="pill">React</span><span class="pill">TypeScript</span><span class="pill">Git</span><span class="pill">GitHub</span><span class="pill">REST APIs</span><span class="pill">Responsive Design</span><span class="pill">Accessibility</span>
+        <span class="pill" aria-hidden="true">HTML5</span><span class="pill" aria-hidden="true">CSS3</span><span class="pill" aria-hidden="true">JavaScript</span><span class="pill" aria-hidden="true">React</span><span class="pill" aria-hidden="true">TypeScript</span><span class="pill" aria-hidden="true">Git</span><span class="pill" aria-hidden="true">GitHub</span><span class="pill" aria-hidden="true">REST APIs</span><span class="pill" aria-hidden="true">Responsive Design</span><span class="pill" aria-hidden="true">Accessibility</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ ABOUT ============================ -->
+<section class="section" id="about" aria-labelledby="aboutTitle">
+  <div class="container about__inner">
+    <div data-reveal="left">
+      <span class="eyebrow">About NEXORA</span>
+      <h2 class="section-title" id="aboutTitle">A studio built around the frontend as a product surface</h2>
+      <blockquote class="about__quote">We believe the interface is where strategy either becomes real or quietly fails.</blockquote>
+      <p class="section-sub">NEXORA is a digital technology studio specialising in frontend engineering, interface design and performance. We work as an embedded team: discovery, design systems, implementation and the measurement that proves it worked. Every engagement leaves behind documentation, a component system and a team able to maintain it.</p>
+      <ul class="feature-list">
+        <li>Design systems as the delivery unit, not one-off screens</li>
+        <li>Accessibility and performance treated as build requirements</li>
+        <li>Documented handover on every engagement</li>
+      </ul>
+    </div>
+    <div class="stat-grid" id="statGrid" data-reveal="right"></div>
+  </div>
+</section>
+
+<!-- ============================ SERVICES ============================ -->
+<section class="section" id="services" aria-labelledby="servicesTitle">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">Services</span>
+      <h2 class="section-title" id="servicesTitle">Capabilities that ship together</h2>
+      <p class="section-sub">Six disciplines that overlap by design, so strategy, interface and implementation never drift apart.</p>
+    </div>
+    <div class="grid grid-3" id="servicesGrid" data-stagger></div>
+  </div>
+</section>
+
+<!-- ============================ SOLUTIONS ============================ -->
+<section class="section" id="solutions" aria-labelledby="solutionsTitle">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Solutions</span>
+      <h2 class="section-title" id="solutionsTitle">Built for your product stage</h2>
+      <p class="section-sub">Select a category to see how the engagement is shaped.</p>
+    </div>
+    <div class="tabs" id="solutionTabs" role="tablist" aria-label="Solution categories" data-reveal></div>
+    <div id="solutionPanel" role="tabpanel" tabindex="0" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============================ WORK ============================ -->
+<section class="section" id="work" aria-labelledby="workTitle">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Featured work</span>
+      <h2 class="section-title" id="workTitle">Case studies from demonstration projects</h2>
+      <p class="section-sub">Fictional engagements created to demonstrate structure, depth and outcome reporting. Select any project for the full case study.</p>
+    </div>
+    <div class="tabs" id="workFilters" aria-label="Filter case studies by category" data-reveal></div>
+    <p class="counter" id="workCount" role="status" aria-live="polite" style="margin-bottom:16px"></p>
+    <div class="grid grid-3" id="workGrid"></div>
+  </div>
+</section>
+
+<!-- ============================ STATISTICS ============================ -->
+<section class="section section--tight" id="stats" aria-labelledby="statsTitle">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">By the numbers</span>
+      <h2 class="section-title" id="statsTitle">Measured, not claimed</h2>
+    </div>
+    <div class="grid grid-4" id="bigStats" data-stagger></div>
+  </div>
+</section>
+
+<!-- ============================ PROCESS ============================ -->
+<section class="section" id="process" aria-labelledby="processTitle">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Process</span>
+      <h2 class="section-title" id="processTitle">Six stages, no surprises</h2>
+      <p class="section-sub">Select a stage to see what happens, who is involved and how long it takes.</p>
+    </div>
+    <div class="process">
+      <div class="process__steps" id="processSteps" role="tablist" aria-label="Development process stages" data-reveal="left"></div>
+      <div class="process__detail" id="processDetail" role="tabpanel" tabindex="0" data-reveal="right"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ TECH ============================ -->
+<section class="section" id="tech" aria-labelledby="techTitle">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">Technology</span>
+      <h2 class="section-title" id="techTitle">The stack behind the work</h2>
+      <p class="section-sub">Chosen for longevity and maintainability rather than novelty.</p>
+    </div>
+    <div class="grid grid-3" id="techGrid" data-stagger></div>
+  </div>
+</section>
+
+<!-- ============================ WHY ============================ -->
+<section class="section" id="why" aria-labelledby="whyTitle">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Why NEXORA</span>
+      <h2 class="section-title" id="whyTitle">Ten commitments we build against</h2>
+    </div>
+    <div class="grid grid-2" id="valueGrid" data-stagger></div>
+  </div>
+</section>
+
+<!-- ============================ TESTIMONIALS ============================ -->
+<section class="section" id="testimonials" aria-labelledby="testimonialsTitle">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">Testimonials</span>
+      <h2 class="section-title" id="testimonialsTitle">What demonstration clients say</h2>
+      <p class="section-sub">Illustrative feedback written for this portfolio project.</p>
+    </div>
+    <div class="carousel" id="testimonialCarousel" role="region" aria-roledescription="carousel" aria-label="Client testimonials" tabindex="0" data-reveal="scale">
+      <div class="carousel__viewport"><div class="carousel__track" id="carouselTrack" aria-live="polite"></div></div>
+      <div class="carousel__controls">
+        <button class="icon-btn" id="carouselPrev" type="button" aria-label="Previous testimonial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="dots" id="carouselDots"></div>
+        <button class="icon-btn" id="carouselNext" type="button" aria-label="Next testimonial">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn btn--ghost btn--sm" id="carouselPlay" type="button" aria-pressed="true">Pause</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================ PRICING ============================ -->
+<section class="section" id="pricing" aria-labelledby="pricingTitle">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">Service plans</span>
+      <h2 class="section-title" id="pricingTitle">Engagements sized to the work</h2>
+      <p class="section-sub">Indicative pricing for demonstration purposes. No payment processing is implemented.</p>
+    </div>
+    <div class="toggle-wrap" data-reveal>
+      <span id="billMonthly">Monthly</span>
+      <button class="switch" id="billingToggle" type="button" role="switch" aria-checked="false" aria-labelledby="billMonthly billYearly"><span class="sr-only">Toggle yearly billing</span></button>
+      <span id="billYearly">Yearly <span class="pill pill--accent">2 months free</span></span>
+    </div>
+    <div class="grid grid-3" id="pricingGrid" data-stagger></div>
+  </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section class="section" id="faq" aria-labelledby="faqTitle">
+  <div class="container">
+    <div class="section-head section-head--center" data-reveal>
+      <span class="eyebrow">FAQ</span>
+      <h2 class="section-title" id="faqTitle">Questions we are asked most</h2>
+    </div>
+    <div class="faq-tools">
+      <label class="sr-only" for="faqSearch">Search questions</label>
+      <input class="input" id="faqSearch" type="search" placeholder="Search questions…" autocomplete="off">
+      <p class="counter" id="faqCount" role="status" aria-live="polite"></p>
+    </div>
+    <div class="accordion" id="faqAccordion" data-reveal></div>
+  </div>
+</section>
+
+<!-- ============================ INSIGHTS ============================ -->
+<section class="section" id="insights" aria-labelledby="insightsTitle">
+  <div class="container">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">Insights</span>
+      <h2 class="section-title" id="insightsTitle">Notes from the build</h2>
+      <p class="section-sub">Short articles on the decisions behind fast, accessible interfaces.</p>
+    </div>
+    <div class="tabs" id="insightFilters" aria-label="Filter articles by category" data-reveal></div>
+    <p class="counter" id="insightCount" role="status" aria-live="polite" style="margin-bottom:16px"></p>
+    <div class="grid grid-3" id="insightsGrid"></div>
+  </div>
+</section>
+
+<!-- ============================ CONTACT ============================ -->
+<section class="section" id="contact" aria-labelledby="contactTitle">
+  <div class="container contact__inner">
+    <div data-reveal="left">
+      <span class="eyebrow">Contact</span>
+      <h2 class="section-title" id="contactTitle">Tell us what you are building</h2>
+      <p class="section-sub">Share a little context and we will respond with an approach, an indicative timeline and the questions we still need answered.</p>
+      <div class="contact-info" style="margin-top:32px">
+        <div class="contact-info__item"><span class="card__icon" style="margin:0">✉</span><div><strong>hello@nexora.studio</strong><p class="counter">Demonstration address</p></div></div>
+        <div class="contact-info__item"><span class="card__icon" style="margin:0">☏</span><div><strong>+1 (555) 0140 · 2088</strong><p class="counter">Mon–Fri, 09:00–18:00 UTC</p></div></div>
+        <div class="contact-info__item"><span class="card__icon" style="margin:0">◎</span><div><strong>Remote-first, global delivery</strong><p class="counter">Overlap hours across EU, UK and North America</p></div></div>
+      </div>
+      <p class="counter" style="margin-top:24px">This form is a frontend simulation. Nothing is transmitted to a server; your draft is stored only in this browser.</p>
+    </div>
+
+    <form class="form" id="contactForm" novalidate data-reveal="right">
+      <div class="form-body">
+        <div class="grid grid-2" style="gap:0 var(--s-4)">
+          <div class="field">
+            <label class="field__label" for="fullName">Full name <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="fullName" name="name" type="text" autocomplete="name" required aria-required="true" placeholder="Your Name">
+            <p class="error-msg" id="err-name"><span aria-hidden="true">!</span><span></span></p>
+          </div>
+          <div class="field">
+            <label class="field__label" for="email">Email <span class="req" aria-hidden="true">*</span></label>
+            <input class="input" id="email" name="email" type="email" autocomplete="email" required aria-required="true" placeholder="Your email">
+            <p class="error-msg" id="err-email"></p>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="company">Company <span class="counter">Optional</span></label>
+          <input class="input" id="company" name="company" type="text" autocomplete="organization" placeholder="Company or team name">
+          <p class="error-msg" id="err-company"></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="projectType">Project type <span class="req" aria-hidden="true">*</span></label>
+          <select class="select" id="projectType" name="projectType" required aria-required="true">
+            <option value="">Select a project type</option>
+            <option>Marketing website</option>
+            <option>Web application</option>
+            <option>SaaS platform</option>
+            <option>E-commerce experience</option>
+            <option>AI-powered product</option>
+            <option>Design system</option>
+            <option>Performance audit</option>
+          </select>
+          <p class="error-msg" id="err-projectType"></p>
+        </div>
+
+        <div class="field">
+          <span class="field__label" id="budgetLabel">Budget range <span class="req" aria-hidden="true">*</span></span>
+          <div class="chip-group" role="group" aria-labelledby="budgetLabel">
+            <button class="chip" type="button" data-budget="Under $5k" aria-pressed="false">Under $5k</button>
+            <button class="chip" type="button" data-budget="$5k – $15k" aria-pressed="false">$5k – $15k</button>
+            <button class="chip" type="button" data-budget="$15k – $40k" aria-pressed="false">$15k – $40k</button>
+            <button class="chip" type="button" data-budget="$40k+" aria-pressed="false">$40k+</button>
+          </div>
+          <input type="hidden" id="budget" name="budget">
+          <p class="error-msg" id="err-budget"></p>
+          <p class="counter" id="planNote" style="margin-top:8px"></p>
+        </div>
+
+        <div class="field">
+          <label class="field__label" for="message">Project details <span class="counter" id="messageCounter">0 / 1000</span></label>
+          <textarea class="textarea" id="message" name="message" required aria-required="true" placeholder="What are you building, who is it for, and what does success look like?"></textarea>
+          <p class="error-msg" id="err-message"></p>
+        </div>
+
+        <div class="form-foot">
+          <button class="btn btn--primary" id="contactSubmit" type="submit"><span class="btn__spinner" aria-hidden="true"></span>Send message</button>
+          <button class="btn btn--quiet btn--sm" id="clearDraft" type="button">Clear saved data</button>
+          <span class="counter" id="draftNote" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div class="form-success">
+        <div class="success-ring" aria-hidden="true">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg>
+        </div>
+        <h3 id="successHeading" tabindex="-1">Message received</h3>
+        <p class="section-sub" style="margin-inline:auto">Our team will review your request and get back to you shortly. This is a frontend simulation — no data was transmitted.</p>
+        <p class="sr-only" id="contactLive" role="status" aria-live="polite"></p>
+        <button class="btn btn--ghost" id="sendAnother" type="button" style="margin-top:20px">Send another message</button>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============================ NEWSLETTER ============================ -->
+<section class="section section--tight" id="newsletter" aria-labelledby="newsletterTitle">
+  <div class="container">
+    <div class="newsletter" data-reveal="scale">
+      <div>
+        <span class="eyebrow">Signal</span>
+        <h2 class="section-title" id="newsletterTitle" style="font-size:clamp(1.6rem,1.2rem+1.4vw,2.2rem)">One considered frontend note each month</h2>
+        <p class="section-sub">Performance, accessibility and interface architecture. No noise, unsubscribe any time.</p>
+      </div>
+      <div>
+        <form class="newsletter__form" data-newsletter novalidate>
+          <label class="sr-only" for="newsletterEmail">Email address</label>
+          <input class="input" id="newsletterEmail" type="email" placeholder="you@company.com" autocomplete="email">
+          <button class="btn btn--primary" type="submit"><span class="btn__spinner" aria-hidden="true"></span>Subscribe</button>
+        </form>
+        <p class="form-note" role="status" aria-live="polite"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================ FOOTER ============================ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="#hero"><span class="brand__text">NEXORA</span></a>
+        <p class="section-sub" style="font-size:0.9rem;margin-top:14px">Digital experiences, engineered for what's next. A fictional technology studio built as a frontend engineering demonstration.</p>
+        <div class="socials">
+          <a class="icon-btn tt" href="#hero" data-tooltip="X (demo link)" aria-label="NEXORA on X (demonstration link)">✕</a>
+          <a class="icon-btn tt" href="#hero" data-tooltip="LinkedIn (demo link)" aria-label="NEXORA on LinkedIn (demonstration link)">in</a>
+          <a class="icon-btn tt" href="#hero" data-tooltip="GitHub (demo link)" aria-label="NEXORA on GitHub (demonstration link)">◇</a>
+        </div>
+      </div>
+      <div>
+        <h4>Navigate</h4>
+        <div class="footer__links">
+          <a href="#hero">Home</a><a href="#solutions">Solutions</a><a href="#work">Work</a><a href="#process">Process</a><a href="#pricing">Pricing</a>
+        </div>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <div class="footer__links">
+          <a href="#services">Frontend Engineering</a><a href="#services">UI/UX Design</a><a href="#services">Web Development</a><a href="#services">AI Experiences</a><a href="#services">Performance</a>
+        </div>
+      </div>
+      <div>
+        <h4>Resources</h4>
+        <div class="footer__links">
+          <a href="#insights">Insights</a><a href="#faq">FAQ</a><a href="#contact">Contact</a>
+          <button type="button" data-search-open>Search (Ctrl K)</button>
+          <button type="button" id="clearAllData">Clear saved data</button>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> NEXORA. Fictional studio created for a frontend engineering portfolio.</span>
+      <span style="display:flex;gap:18px;flex-wrap:wrap"><a href="#faq">Privacy Policy</a><a href="#faq">Terms of Service</a><a href="#contact">hello@nexora.studio</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================ OVERLAYS ============================ -->
+<button class="to-top" id="toTop" type="button" aria-label="Back to top">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20V5"/><path d="m6 11 6-6 6 6"/></svg>
+</button>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-hidden="true">
+  <div class="modal__scrim" data-modal-close></div>
+  <div class="modal__dialog"><div id="modalContent"></div></div>
+</div>
+
+<div class="search" id="search" role="dialog" aria-modal="true" aria-label="Site search" aria-hidden="true">
+  <div class="search__scrim" data-search-close></div>
+  <div class="search__panel">
+    <div class="search__bar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.2-3.2"/></svg>
+      <label class="sr-only" for="searchInput">Search services, work, insights and FAQs</label>
+      <input class="search__input" id="searchInput" type="search" placeholder="Search services, work, insights, FAQs…" autocomplete="off">
+      <button class="icon-btn" type="button" data-search-close aria-label="Close search">esc</button>
+    </div>
+    <p class="search__count" id="searchCount" role="status" aria-live="polite"></p>
+    <div class="search__results" id="searchResults"></div>
+    <div class="search__foot"><span>↑ ↓ to navigate</span><span>Enter to open</span><span>Esc to close</span></div>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+<script src="js/icons.js"></script>
+<script src="js/data.js"></script>
+<script src="js/data-extra.js"></script>
+<script src="js/store.js"></script>
+<script src="js/overlay.js"></script>
+<script src="js/components.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/animations.js"></script>
+<script src="js/filters.js"></script>
+<script src="js/forms.js"></script>
+<script src="js/search.js"></script>
+<script src="js/pricing.js"></script>
+<script src="js/checkout.js"></script>
+<script src="js/dashboard.js"></script>
+<script src="js/prefs.js"></script>
+<script src="js/inquiry.js"></script>
+<script src="js/router.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
