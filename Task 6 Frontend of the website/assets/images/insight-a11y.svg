@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Abstract visual for A11Y">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1018"/><stop offset="1" stop-color="#0e1622"/></linearGradient>
+<linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#5b9dff"/></linearGradient>
+<radialGradient id="glow" cx="0.25" cy="0.15" r="0.8"><stop offset="0" stop-color="#34d399" stop-opacity="0.35"/><stop offset="1" stop-color="#34d399" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" fill-opacity="0.07"/></pattern>
+</defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<rect width="800" height="500" fill="url(#dots)"/>
+<rect width="800" height="500" fill="url(#glow)"/>
+<rect x="90" y="90" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.18" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="218" y="90" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.24" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="346" y="90" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.30" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="474" y="90" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.36" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="602" y="90" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.42" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="90" y="202" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.24" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="218" y="202" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.30" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="346" y="202" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.36" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="474" y="202" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.42" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="602" y="202" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.18" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="90" y="314" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.30" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="218" y="314" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.36" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="346" y="314" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.42" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="474" y="314" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.18" stroke="#34d399" stroke-opacity="0.25"/>
+<rect x="602" y="314" width="106" height="88" rx="14" fill="url(#g2)" opacity="0.24" stroke="#34d399" stroke-opacity="0.25"/>
+</svg>

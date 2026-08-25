@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="800" height="500" role="img" aria-label="Abstract visual for Ai">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0a1018"/><stop offset="1" stop-color="#0e1622"/></linearGradient>
+<linearGradient id="g2" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#7c8cff"/><stop offset="1" stop-color="#3ddad0"/></linearGradient>
+<radialGradient id="glow" cx="0.25" cy="0.15" r="0.8"><stop offset="0" stop-color="#7c8cff" stop-opacity="0.35"/><stop offset="1" stop-color="#7c8cff" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="1.5" cy="1.5" r="1.5" fill="#ffffff" fill-opacity="0.07"/></pattern>
+</defs>
+<rect width="800" height="500" fill="url(#bg)"/>
+<rect width="800" height="500" fill="url(#dots)"/>
+<rect width="800" height="500" fill="url(#glow)"/>
+<path d="M0 198 C 160 118, 260 278, 400 198 S 660 108, 800 198" fill="none" stroke="#3ddad0" stroke-width="3" opacity="0.70"/>
+<path d="M0 224 C 160 144, 260 304, 400 224 S 660 134, 800 224" fill="none" stroke="#7c8cff" stroke-width="3" opacity="0.60"/>
+<path d="M0 250 C 160 170, 260 330, 400 250 S 660 160, 800 250" fill="none" stroke="#3ddad0" stroke-width="3" opacity="0.50"/>
+<path d="M0 276 C 160 196, 260 356, 400 276 S 660 186, 800 276" fill="none" stroke="#7c8cff" stroke-width="3" opacity="0.40"/>
+<path d="M0 302 C 160 222, 260 382, 400 302 S 660 212, 800 302" fill="none" stroke="#3ddad0" stroke-width="3" opacity="0.30"/>
+<circle cx="400" cy="250" r="66" fill="none" stroke="#7c8cff" stroke-width="2" opacity="0.7"/>
+<circle cx="400" cy="250" r="26" fill="url(#g2)"/>
+</svg>
