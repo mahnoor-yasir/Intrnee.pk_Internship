@@ -420,46 +420,6 @@ The responsive interface is designed to avoid horizontal overflow while keeping 
 
 ---
 
-# 📂 Project Structure
-
-```text
-TalkBox/
-│
-├── index.html
-│
-├── css/
-│   └── style.css
-│
-├── js/
-│   ├── app.js
-│   └── ai.js
-│
-├── assets/
-│   ├── images/
-│   └── icons/
-│
-└── README.md
-```
-
-> The exact structure may vary slightly depending on the current project version.
-
----
-
-# 🚀 Getting Started
-
-## 1️⃣ Clone the Repository
-
-```bash
-git clone YOUR_REPOSITORY_URL
-```
-
-Move into the project folder:
-
-```bash
-cd YOUR_PROJECT_FOLDER
-```
-
----
 
 ## 2️⃣ Run TalkBox
 
