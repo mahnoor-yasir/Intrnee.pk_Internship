@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>TalkBox — Conversations, beautifully connected.</title>
+<meta name="description" content="TalkBox is a premium frontend-only chat experience: multiple conversations, people search, attachments, shared media, an assistant and persistent local history." />
+<meta name="theme-color" content="#4f6bed" />
+<meta property="og:title" content="TalkBox — Conversations, beautifully connected." />
+<meta property="og:description" content="A polished frontend-only messaging product built with HTML, CSS and JavaScript." />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<a class="skip-link" href="#composer-input">Skip to composer</a>
+
+<div class="app" id="app" data-view="list">
+  <!-- SIDEBAR / CONVERSATION LIST -->
+  <aside class="sidebar" id="sidebar" aria-label="Conversations">
+    <header class="sidebar__top">
+      <div class="brand">
+        <span class="brand__mark" aria-hidden="true">
+          <svg viewBox="0 0 32 32" width="32" height="32"><rect x="1.2" y="1.2" width="29.6" height="29.6" rx="9" fill="url(#tbg)"/><path d="M9 11.5h14M16 11.5V22" stroke="#fff" stroke-width="2.6" stroke-linecap="round"/><path d="M23.6 20.4v2.9a1.6 1.6 0 0 1-2.6 1.25l-2.2-1.7" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".85"/><defs><linearGradient id="tbg" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#5b7cfa"/><stop offset="1" stop-color="#3f52c9"/></linearGradient></defs></svg>
+        </span>
+        <span class="brand__text">
+          <strong>TalkBox</strong>
+          <small>Conversations, beautifully connected.</small>
+        </span>
+      </div>
+      <button class="icon-btn" id="themeBtnTop" aria-label="Toggle theme" title="Toggle theme (Ctrl+J)"><span id="themeIcon">◐</span></button>
+    </header>
+
+    <div class="profile" id="profileCard">
+      <div class="avatar avatar--md" id="meAvatar" data-initials="YO"></div>
+      <div class="profile__meta">
+        <span class="profile__name" id="meName">You</span>
+        <span class="profile__status"><i class="dot dot--online"></i><span id="meStatus">Active now</span></span>
+      </div>
+      <button class="icon-btn" id="settingsBtn" aria-label="Open settings" title="Settings (Ctrl+,)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 12H2.1M21.9 12h-2.4M6.3 6.3L4.6 4.6M19.4 19.4l-1.7-1.7M17.7 6.3l1.7-1.7M4.6 19.4l1.7-1.7"/></svg></button>
+    </div>
+
+    <div class="sidebar__search">
+      <label class="search">
+        <span class="search__icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M15.6 15.6L21 21"/></svg></span>
+        <input id="searchInput" type="search" placeholder="Search chats & messages" aria-label="Search conversations and messages" />
+      </label>
+      <button class="btn btn--primary btn--icon" id="newChatBtn" aria-label="New conversation" title="New conversation (Ctrl+N)">＋</button>
+    </div>
+
+    <nav class="conv-list" id="convList" aria-label="Conversation list"></nav>
+
+    <footer class="sidebar__foot">
+      <button class="btn btn--ghost" id="peopleBtn" title="Find people">🔍 People</button>
+      <button class="btn btn--ghost" id="exportBtn" title="Export all chat data">⤓ Export</button>
+    </footer>
+  </aside>
+
+  <div class="scrim" id="scrim" hidden></div>
+
+  <!-- CHAT -->
+  <main class="chat" id="chat">
+    <header class="chat__header">
+      <button class="icon-btn only-mobile" id="backBtn" aria-label="Back to conversations" title="Back">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+      </button>
+      <div class="avatar avatar--md" id="peerAvatar" data-initials="TB"></div>
+      <div class="chat__who" id="peerInfoBtn" role="button" tabindex="0" title="Open details">
+        <h1 id="peerName">Select a conversation</h1>
+        <p id="peerStatus" class="muted"></p>
+      </div>
+      <span class="ai-badge" id="aiBadge" hidden></span>
+      <div class="chat__actions">
+        <button class="icon-btn" id="searchMsgBtn" aria-label="Search in conversation" title="Search messages (Ctrl+F)"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6"/><path d="M15.6 15.6L21 21"/></svg></button>
+        <button class="icon-btn" data-call="voice" aria-label="Start voice call" title="Voice call"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3.5h3l1.5 4-2 1.5a12 12 0 0 0 6 6l1.5-2 4 1.5v3a2 2 0 0 1-2.2 2A16.5 16.5 0 0 1 4.5 5.7 2 2 0 0 1 6.5 3.5z"/></svg></button>
+        <button class="icon-btn" data-call="video" aria-label="Start video call" title="Video call"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="12" height="11" rx="2.5"/><path d="M14.5 10.5l6-3v9l-6-3z"/></svg></button>
+        <button class="icon-btn" id="infoBtn" aria-label="Toggle details panel" title="Details"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5.5"/><circle cx="12" cy="7.9" r="1.05" fill="currentColor" stroke="none"/></svg></button>
+        <div class="menu-wrap">
+          <button class="icon-btn" id="moreBtn" aria-haspopup="true" aria-expanded="false" aria-label="More options">⋯</button>
+          <div class="menu" id="moreMenu" role="menu" hidden>
+            <button role="menuitem" data-act="pin">Pin conversation</button>
+            <button role="menuitem" data-act="mute">Mute notifications</button>
+            <button role="menuitem" data-act="read">Mark as read</button>
+            <button role="menuitem" data-act="media">Shared media</button>
+            <button role="menuitem" data-act="export">Export conversation</button>
+            <button role="menuitem" data-act="clear" class="danger">Clear messages</button>
+            <button role="menuitem" data-act="delete" class="danger">Delete conversation</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="msg-search" id="msgSearch" hidden>
+      <input id="msgSearchInput" type="search" placeholder="Search in this conversation…" aria-label="Search in this conversation" />
+      <span class="muted" id="msgSearchCount"></span>
+      <button class="icon-btn" id="msgSearchClose" aria-label="Close message search">✕</button>
+    </div>
+
+    <section class="messages" id="messages" tabindex="0" aria-label="Messages"></section>
+
+    <button class="jump" id="jumpBtn" hidden>New messages ↓</button>
+
+    <div class="typing" id="typing" hidden>
+      <span class="typing__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+      <span id="typingText">typing…</span>
+    </div>
+
+    <div class="reply-strip" id="replyStrip" hidden>
+      <span aria-hidden="true">↩</span>
+      <span class="rs-text" id="replyText"></span>
+      <button class="icon-btn" id="replyCancel" aria-label="Cancel reply">✕</button>
+    </div>
+
+    <form class="composer" id="composer" autocomplete="off">
+      <button type="button" class="icon-btn" id="attachBtn" aria-label="Attach a file or image" title="Attach"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11.5l-7.6 7.6a4.6 4.6 0 0 1-6.5-6.5l8-8a3.2 3.2 0 0 1 4.5 4.5l-8 8a1.8 1.8 0 0 1-2.5-2.5l7-7"/></svg></button>
+      <input type="file" id="fileInput" hidden multiple accept="image/*,.pdf,.txt,.zip,.doc,.docx,.csv,.json" />
+      <div class="menu-wrap">
+        <button type="button" class="icon-btn" id="emojiBtn" aria-label="Insert emoji" aria-expanded="false" title="Emoji"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0"/><circle cx="9" cy="9.8" r="1" fill="currentColor" stroke="none"/><circle cx="15" cy="9.8" r="1" fill="currentColor" stroke="none"/></svg></button>
+        <div class="emoji" id="emojiPanel" hidden></div>
+      </div>
+      <textarea id="composer-input" rows="1" placeholder="Write a message…" aria-label="Message"></textarea>
+      <button type="submit" class="btn btn--primary btn--send" id="sendBtn" aria-label="Send message"><svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 8 6 8-16-8z"/></svg></button>
+    </form>
+  </main>
+
+  <!-- DETAILS -->
+  <aside class="details" id="details" aria-label="Conversation details">
+    <header class="details__head">
+      <h2>Details</h2>
+      <button class="icon-btn" id="detailsClose" aria-label="Close details">✕</button>
+    </header>
+    <div class="details__body" id="detailsBody"></div>
+  </aside>
+</div>
+
+<!-- Settings modal -->
+<div class="modal" id="settingsModal" hidden role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+  <div class="modal__card">
+    <header class="modal__head"><h2 id="settingsTitle">Settings</h2><button class="icon-btn" data-close-modal aria-label="Close">✕</button></header>
+    <div class="modal__body">
+      <label class="field"><span>Display name</span><input id="setName" type="text" maxlength="24" /></label>
+      <label class="field"><span>Status message</span><input id="setStatus" type="text" maxlength="40" /></label>
+      <label class="field field--row"><span>Appearance</span>
+        <select id="setTheme"><option value="light">Light</option><option value="dark">Dark</option><option value="system">System</option></select>
+      </label>
+      <label class="field field--row"><span>Message sounds</span><input id="setSound" type="checkbox" /></label>
+      <label class="field field--row"><span>Toast notifications</span><input id="setToast" type="checkbox" /></label>
+      <label class="field field--row"><span>Auto replies from contacts</span><input id="setAuto" type="checkbox" /></label>
+      <label class="field field--row"><span>Ambient background activity</span><input id="setAmbient" type="checkbox" /></label>
+      <label class="field field--row"><span>Enter sends message</span><input id="setEnter" type="checkbox" /></label>
+      <div class="field"><span>AI assistant</span>
+        <p class="muted" style="font-size:12px;margin:0 0 8px">TalkBox Assistant includes a built-in pack of 100 predefined questions across multiple domains. It works locally without an API key or paid AI service, and accepts small wording, case and punctuation variations.</p>
+      </div>
+      <label class="field field--row"><span>Provider</span>
+        <select id="aiProvider">
+          <option value="talkbox">Built-in 100-question knowledge pack</option>
+        </select>
+      </label>
+      <label class="field" id="aiServiceRow" hidden><span>Service endpoint</span><input id="aiServiceUrl" type="text" value="built-in" /></label>
+      <label class="field ai-custom" hidden><span>Endpoint base URL</span><input id="aiBaseUrl" type="url" /></label>
+      <label class="field ai-custom" hidden><span>Model</span><input id="aiModel" type="text" /></label>
+      <label class="field ai-custom" hidden><span>API key</span><input id="aiKey" type="password" autocomplete="off" /></label>
+      <div class="field field--row"><span id="aiStatus" class="ai-status" style="font-size:12px"></span><button type="button" class="btn btn--ghost" id="aiTestBtn">Test connection</button></div>
+
+      <div class="field"><span>Keyboard shortcuts</span>
+        <ul class="shortcuts">
+          <li><kbd>Enter</kbd> send · <kbd>Shift</kbd>+<kbd>Enter</kbd> new line</li>
+          <li><kbd>Ctrl</kbd>+<kbd>K</kbd> search · <kbd>Ctrl</kbd>+<kbd>F</kbd> in-chat search</li>
+          <li><kbd>Ctrl</kbd>+<kbd>J</kbd> theme · <kbd>Ctrl</kbd>+<kbd>N</kbd> new chat · <kbd>Esc</kbd> close</li>
+        </ul>
+      </div>
+      <p class="muted" id="storageInfo" style="font-size:12px"></p>
+    </div>
+    <footer class="modal__foot">
+      <button class="btn btn--danger-ghost" id="resetBtn">Reset all data</button>
+      <button class="btn btn--primary" data-close-modal>Done</button>
+    </footer>
+  </div>
+</div>
+
+<!-- New conversation / people search modal -->
+<div class="modal" id="newModal" hidden role="dialog" aria-modal="true" aria-labelledby="newTitle">
+  <div class="modal__card modal__card--sm">
+    <header class="modal__head"><h2 id="newTitle">New conversation</h2><button class="icon-btn" data-close-modal aria-label="Close">✕</button></header>
+    <div class="modal__body">
+      <label class="field"><span>Search people by name or username</span>
+        <input id="peopleSearch" type="search" placeholder="e.g. Priya, @marcus, designer…" autocomplete="off" />
+      </label>
+      <div class="people" id="peopleResults" role="listbox" aria-label="People results"></div>
+      <p class="muted" style="font-size:12px">Only members of the Vertex Labs workspace directory can be messaged.</p>
+    </div>
+    <footer class="modal__foot">
+      <button class="btn btn--primary" data-close-modal>Close</button>
+    </footer>
+  </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-label="Image preview">
+  <div class="lightbox__bar">
+    <span class="lb-name" id="lbName"></span>
+    <button class="icon-btn" id="lbClose" aria-label="Close preview">✕</button>
+  </div>
+  <div class="lightbox__stage"><img id="lbImg" alt="" /></div>
+  <div class="lightbox__nav">
+    <button class="btn" id="lbPrev" type="button">← Prev</button>
+    <span id="lbCount"></span>
+    <button class="btn" id="lbNext" type="button">Next →</button>
+  </div>
+</div>
+
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<script src="js/data.js"></script>
+<script src="js/markdown.js"></script>
+<script src="js/ai.js"></script>
+<script src="js/contacts.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
